@@ -1,0 +1,30 @@
+GET http://localhost:3000/siswa
+
+###
+
+GET http://localhost:3000/siswa?page=3&limit=1
+
+###
+
+POST http://localhost:3000/siswa
+Content-Type: application/json
+
+{
+    "nama": "Maxi Aditya Kusuma Winarjo",
+    "email": "maxi@filiasofia.sch.id",
+    "nohp": "+62895617047135",
+    "jurusan": "IPA"
+}
+###
+PATCH http://localhost:3000/siswa
+Content-Type: application/json
+
+{
+    "nama": "maxi aditya kusuma",
+    "email": "maxiaditya123@gmail.com",
+    "nohp": "+62895617047135",
+    "jurusan": "IPS"
+}
+
+###
+DELETE http://localhost:3000/siswa/604c43d11d971f21c878a786
