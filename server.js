@@ -1,6 +1,8 @@
-// import and initialize environtment lib: mongoose and express.
+// import and initialize environtment lib: mongoose, express, swaggerUI.
 const mongoose = require('mongoose')
 const express = require('express')
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
 const app = express()
 
 // initialize .env file
@@ -29,4 +31,28 @@ db.once('open', () => console.log('Connected to Database'))
 const usersRouter = require('./routes/users.routes')
 
 // api routes endpoint
-app.use('/siswa', usersRouter)
+app.use('/v1/siswa', usersRouter)
+
+// swaggerUI Options
+const options = {
+	definition: {
+		openapi: "3.0.0",
+		info: {
+			title: "Siswa REST API",
+			version: "1.0.0",
+			description: "A simple Express Library API",
+		},
+		servers: [
+			{
+				url: "http://localhost:3000",
+			},
+		],
+	},
+	apis: ["./routes/*.js"],
+};
+
+// create docs base on options
+const specs = swaggerJsDoc(options);
+
+// use this endpoint to serve swagger UI
+app.use("/v1/api-docs", swaggerUI.serve, swaggerUI.setup(specs));

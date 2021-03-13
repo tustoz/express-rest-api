@@ -2,7 +2,7 @@ GET http://localhost:3000/siswa
 
 ###
 
-GET http://localhost:3000/siswa?page=3&limit=1
+GET http://localhost:3000/siswa?page=1&limit=1
 
 ###
 
@@ -27,4 +27,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/siswa/604c43d11d971f21c878a786
+DELETE http://localhost:3000/siswa/604c44d461788c1368df611a

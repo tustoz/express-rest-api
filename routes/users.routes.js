@@ -4,7 +4,7 @@ const express = require('express')
 // import and init .Router() method.
 const router = express.Router()
 
-//import mongodb models
+// import mongodb models
 const User = require('../models/user')
 
 // REQUEST METHOD: GET, POST, PUT, PATCH, DELETE, HEAD
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
 
 
 // GET ALL (READ)
-// Getting All Siswa
+// Getting All user
 router.get('/', async (req, res) => {
   try {
     // find user from database
@@ -160,5 +160,173 @@ async function getUser(req, res, next) {
   res.user = user
   next()
 }
+
+// SwaggerUI API Docs
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Siswa:
+ *       type: object
+ *       required:
+ *         - nama
+ *         - email
+ *         - nohp
+ *         - jurusan
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: Id user
+ *         nama:
+ *           type: string
+ *           description: Nama user
+ *         email:
+ *           type: string
+ *           description: Email user
+ *         nohp:
+ *           type: string
+ *           description: Nomor Hp user
+ *         jurusan:
+ *           type: string
+ *           description: Jurusan user
+ *       example:
+ *         id: 604c8dce155fec06c43c4a44
+ *         nama: Maxi Aditya Kusuma
+ *         email: maxi@filiasofia.sch.id
+ *         nohp: +62895617047135
+ *         jurusan: IPA
+ */
+
+/**
+ * @swagger
+ * /v1/siswa:
+ *   get:
+ *     summary: Get all student lists
+ *     tags: [Siswa]
+ *     responses:
+ *       200:
+ *         description: Get all student lists
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Siswa'
+ */
+
+/**
+ * @swagger
+ * tags:
+ *   name: Siswa
+ */
+
+/**
+ * @swagger
+ * /v1/siswa/{id}:
+ *   get:
+ *     summary: Get student by id
+ *     tags: [Siswa]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: search user by id
+ *     responses:
+ *       200:
+ *         description:  success find user by id
+ *         contens:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Siswa'
+ *       401:
+ *          description: Unauthorized request
+ *       403:
+ *          description: The user not allowed to access
+ *       404:
+ *         description: The user was not found
+ *       500:
+ *         description: Internal server error
+ *
+ */
+
+/**
+ * @swagger
+ * /v1/siswa:
+ *   post:
+ *     summary: Create a new user
+ *     tags: [Siswa]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Siswa'
+ *     responses:
+ *       201:
+ *         description: The users was successfully created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Siswa'
+ *       500:
+ *         description: Some server error
+ */
+
+/**
+ * @swagger
+ * /v1/siswa/{id}:
+ *  put:
+ *    summary: Update student by the id
+ *    tags: [Siswa]
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: The users id
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/Siswa'
+ *    responses:
+ *      200:
+ *        description: The users was updated
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Siswa'
+ *      404:
+ *        description: The users was not found
+ *      500:
+ *        description: Some error happened
+ */
+
+/**
+ * @swagger
+ * /v1/siswa/{id}:
+ *   delete:
+ *     summary: Remove student by id
+ *     tags: [Siswa]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The users id
+ *
+ *     responses:
+ *       200:
+ *         description: The user was deleted
+ *       404:
+ *         description: The user was not found
+ */
+
 
 module.exports = router
