@@ -1,8 +1,5 @@
-// import and initialize environtment lib: express.
-const express = require('express')
-
 // import and init .Router() method.
-const router = express.Router()
+const router = require('express').Router()
 
 // import mongodb models
 const User = require('../models/user')
@@ -21,7 +18,7 @@ router.post('/', async (req, res) => {
   // save user
   try {
     const newUser = await user.save()
-    // if success return statuscode 201 and display new user.
+    // if success, return statuscode 201 and display new user.
     res.status(201).json(newUser)
     // if error, catch error and return statuscode 400, with error message.
   } catch (err) {
@@ -176,20 +173,20 @@ async function getUser(req, res, next) {
  *         - jurusan
  *       properties:
  *         id:
- *           type: string
- *           description: Id user
+ *           type: id
+ *           description: Id siswa
  *         nama:
  *           type: string
- *           description: Nama user
+ *           description: Nama siswa
  *         email:
  *           type: string
- *           description: Email user
+ *           description: Email siswa
  *         nohp:
- *           type: string
- *           description: Nomor Hp user
+ *           type: number
+ *           description: Nomor Hp siswa
  *         jurusan:
  *           type: string
- *           description: Jurusan user
+ *           description: Jurusan siswa
  *       example:
  *         id: 604c8dce155fec06c43c4a44
  *         nama: Maxi Aditya Kusuma
@@ -237,6 +234,41 @@ async function getUser(req, res, next) {
  *     responses:
  *       200:
  *         description:  success find user by id
+ *         contens:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Siswa'
+ *       401:
+ *          description: Unauthorized request
+ *       403:
+ *          description: The user not allowed to access
+ *       404:
+ *         description: The user was not found
+ *       500:
+ *         description: Internal server error
+ *
+ */
+
+/**
+ * @swagger
+ * /v1/siswa?page={page}&limit={limit}:
+ *   get:
+ *     summary: Get student list with pagination
+ *     tags: [Siswa]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         type: number
+ *         required: true
+ *         description: number of page
+ *       - in: query
+ *         name: limit
+ *         type: number
+ *         required: true
+ *         description: limit number
+ *     responses:
+ *       200:
+ *         description:  success find user by pagination
  *         contens:
  *           application/json:
  *             schema:

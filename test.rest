@@ -1,12 +1,12 @@
-GET http://localhost:3000/siswa
+GET http://localhost:3000/v1/siswa
 
 ###
 
-GET http://localhost:3000/siswa?page=1&limit=1
+GET http://localhost:3000/v1/siswa?page=1&limit=1
 
 ###
 
-POST http://localhost:3000/siswa
+POST http://localhost:3000/v1/siswa
 Content-Type: application/json
 
 {
@@ -27,4 +27,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/siswa/604c44d461788c1368df611a
+DELETE http://localhost:3000/v1/siswa/604cb18e33d8190cb47c3771

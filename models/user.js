@@ -1,5 +1,7 @@
+// import mongoose module
 const mongoose = require('mongoose')
 
+// create new mongoose models
 const userSchema = new mongoose.Schema({
   nama: {
     type: String,
@@ -19,4 +21,5 @@ const userSchema = new mongoose.Schema({
   }
 })
 
+// export models
 module.exports = mongoose.model('User', userSchema)
