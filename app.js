@@ -24,8 +24,7 @@ app.use("/", (req, res) => {
 });
 
 // listen port 3000
-port = process.env.PORT || 80
-app.listen(port, () => console.log("Server Started"));
+app.listen(80, () => console.log("Server Started"));
 
 // ===== DATABASE =====
 
