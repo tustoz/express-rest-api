@@ -1,5 +1,5 @@
 GET http://localhost:3000/v1/siswa
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.bWF4aUBmaWxpYXNvZmlhLnNjaC5pZA.jmrZRZgWRCwEN0LZRo3cfg-TsKtiBvcnc3ymNs0dRvA
 ###
 
 GET http://localhost:3000/v1/siswa?page=1&limit=1
@@ -13,8 +13,20 @@ Content-Type: application/json
     "nama": "Maxi Aditya Kusuma Winarjo",
     "email": "maxi@filiasofia.sch.id",
     "nohp": "+62895617047135",
-    "jurusan": "IPA"
+    "jurusan": "IPA",
+    "password": "javascript"
 }
+
+###
+
+POST http://localhost:3000/v1/siswa/login
+Content-Type: application/json
+
+{
+    "email": "maxi@filiasofia.sch.id",
+    "password": "javascript"
+}
+
 ###
 PATCH http://localhost:3000/siswa
 Content-Type: application/json
@@ -27,4 +39,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/v1/siswa/604cb18e33d8190cb47c3771
+DELETE http://localhost:3000/v1/siswa/605f37d2c6f1722110ba5860
