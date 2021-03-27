@@ -20,7 +20,7 @@ const usersRouter = require("./routes/users.routes");
 app.use("/v1/siswa", usersRouter);
 
 // listen port 3000
-app.listen(3000, () => console.log("Server Started"));
+app.listen(process.env.PORT || 3000, () => console.log("Server Started"));
 
 // ===== DATABASE =====
 
