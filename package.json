@@ -4,7 +4,6 @@
   "description": "Simple REST API with Express",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon app.js",
     "start": "node app.js"
   },
   "author": "Maxi Aditya Kusuma",
