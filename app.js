@@ -19,6 +19,10 @@ const usersRouter = require("./routes/users.routes");
 // api routes endpoint
 app.use("/v1/siswa", usersRouter);
 
+app.use("/", (req, res) => {
+  res.send("Server Running");
+});
+
 // listen port 3000
 app.listen(process.env.PORT || 3000, () => console.log("Server Started"));
 
