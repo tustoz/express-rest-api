@@ -4,7 +4,9 @@
   "description": "Simple REST API with Express",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "set NODE_ENV=development&& node app.js",
+    "start-prod": "set NODE_ENV=production&& node app.js"
   },
   "author": "Maxi Aditya Kusuma",
   "license": "MIT",
@@ -21,6 +23,6 @@
     "nodemon": "^1.19.0"
   },
   "engines": {
-    "node": "14.x"
+    "node": "14.16.0"
   }
 }
